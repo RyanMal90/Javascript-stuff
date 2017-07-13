@@ -1,0 +1,56 @@
+<html>
+
+<head></head>
+
+<body>
+
+    <script>
+        var cars = []
+        function searchG() {
+            //var requestData = request.response;//for getting a respone from the query
+            var regNum = document.getElementById("TB1").value;//gets value of input to textbox
+            var make = document.getElementById("TB2").value;
+            var model = document.getElementById("TB3").value;
+            var fault = document.getElementById("TB4").value;
+
+            var car = { "regNum": regNum, "make": make, "model": model, "fault": fault }
+            cars.push(car);
+            console.log(cars);
+
+        }
+        function contents() {
+            var container = document.getElementById("content");
+            container.innerHTML = ""
+            for (var i = 0; i < cars.length; i++) {
+                container.innerHTML += cars[i].regNum + "<br>";
+                container.innerHTML += cars[i].make + "<br>";
+                container.innerHTML += cars[i].model + "<br>";
+                container.innerHTML += (cars[i].fault * 90) + "<br>";
+            }
+        }
+        function checkOut() {
+            var regNum = document.getElementById("TB1").value;
+            cars = cars.filter(function (car) {
+                return car.regNum != regNum
+            })
+        }
+    </Script>
+    <input type="textbox" id="TB1" value="PE15 WMA"><br>
+    <input type="textbox" id="TB2" value="Harley Davidson"><br>
+    <input type="textbox" id="TB3" value="Iron 883 XL"><br>
+    <input type="textbox" id="TB4" value="3"><br>
+
+
+    <button onclick="searchG()">Check in</button>
+    <button onclick="contents()">Show all</button>
+    <button onclick="checkOut()">Remove</button>
+
+
+    <p id="Reg"></p>
+    <p id="Make"></p>
+    <p id="Model"></p>
+
+    <div id="content"></div>
+</body>
+
+</html>
